@@ -1,2 +1,2 @@
-INSERT into watch(model_name,price,brand,movement_type,status) values('Rolex Submariner', 7500.00, 'Rolex', 'Automatic', 'IN_STOCK');
+INSERT INTO watch(model_name,price,brand,movement_type,status) values('Rolex Submariner', 7500.00, 'Rolex', 'Automatic', 'IN_STOCK');
 INSERT into watch(model_name,price,brand,movement_type,status) values('Detox Submariner', 9500.00, 'Detox', 'Automatic', 'IN_STOCK');

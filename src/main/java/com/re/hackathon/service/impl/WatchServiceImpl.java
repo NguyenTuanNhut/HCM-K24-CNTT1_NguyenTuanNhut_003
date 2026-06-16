@@ -4,29 +4,29 @@ import com.re.hackathon.entity.Watch;
 import com.re.hackathon.repository.WatchRepostitory;
 import com.re.hackathon.service.WatchService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-@RequiredArgsConstructor
 
+@Service
+@RequiredArgsConstructor
 public class WatchServiceImpl implements WatchService {
-    WatchRepostitory watchRepostitory;
+    private final WatchRepostitory watchRepostitory;
     @Override
     public List<Watch> getAllWatch() {
         return watchRepostitory.findAll();
     }
     @Override
-    public Watch getWatchById(@PathVariable Long Id) {
-        return watchRepostitory.findById(Id).orElse(null);
+    public Watch getWatchById(Long id) {
+        return watchRepostitory.findById(id).orElse(null);
     }
     @Override
-    public  Watch addWatch(@RequestBody Watch watch) {
+    public Watch addWatch(Watch watch) {
         return watchRepostitory.save(watch);
     }
     @Override
-    public Watch updateWatch(@PathVariable Long id,@RequestBody Watch watch){
-        Watch exiting=getWatchById(id);
+    public Watch updateWatch(Long id, Watch watch) {
+        Watch exiting = getWatchById(id);
         exiting.setId(watch.getId());
         exiting.setModelName(watch.getModelName());
         exiting.setBrand(watch.getBrand());
@@ -36,7 +36,7 @@ public class WatchServiceImpl implements WatchService {
         return watchRepostitory.save(exiting);
     }
     @Override
-    public void deleteWatch(@PathVariable Long id){
+    public void deleteWatch(Long id) {
         watchRepostitory.delete(getWatchById(id));
     }
 }
